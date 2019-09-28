@@ -1,11 +1,11 @@
 const fs = require("fs");
 
-const getNotes = function(){
+const getNotes = () => {
     return "your notes...";
 };
 
 // addNote function to add data to json file
-const addNote = function(title, body){
+const addNote = (title, body) => {
     const notes = loadNotes();
     // filtering the duplicate notes
     const duplicateNote = notes.find((note) => note.title === title);
@@ -23,13 +23,13 @@ const addNote = function(title, body){
 };
 
 // function to save notes in the json file
-const saveNotes = function(notes){
+const saveNotes = (notes) => {
     dataJSON = JSON.stringify(notes);
     fs.writeFileSync("notes.json", dataJSON);
 };
 
 // function to load data from json file
-const loadNotes = function(){
+const loadNotes = () => {
     try{
         const dataBuffer = fs.readFileSync("notes.json");
         const dataJSON = dataBuffer.toString();
@@ -42,9 +42,9 @@ const loadNotes = function(){
 };
 
 // function to remove notes from json file
-const removeNote = function(title){
+const removeNote = (title) => {
     const notes = loadNotes();
-    notesTokeep = notes.filter(function(note){
+    notesTokeep = notes.filter((note) => {
         return note.title !== title;
     });
 
